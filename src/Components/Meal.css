@@ -1,0 +1,188 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  #wrapper {
+    text-align: center;
+    width: 500px;
+    height: auto;
+    margin: auto;
+  }
+  
+  .navbar{
+      display: flex;
+      padding-left: 40px;
+      padding-top: 30px;
+  }
+  .navbar a {
+    text-decoration:none;
+    color: white; 
+  }
+  .navbar a:active, .navbar a:focus, .navbar a:hover {
+      color: rgb(20, 20, 20); 
+  }
+  .navbar a.highlite {
+      color:red;
+  }
+  .navbar .current{
+    background-color: rgb(20, 20, 20);
+  }
+  .step1, .step2, .step3, .review{
+      border: 1px solid #5979d4;
+      padding: 5px 30px;
+      background-color: #5979d4;
+  }
+  .phase_one {
+    background-color: #5979d4;
+    height: 330px;
+    margin-top: 50px;
+  }
+  .meal_selection p {
+    padding-top: 20px;
+    padding-bottom: 5px;
+  }
+  
+  .guest_number p {
+    padding-top: 70px;
+    padding-bottom: 5px;
+  }
+  
+  .next_btn {
+    padding-top: 40px;
+    text-align: right;
+    padding-right: 60px;
+  }
+  .next_btn a {
+    text-decoration: none;
+    padding: 15px;
+      color: #5979d4;
+      font-weight: bold;
+  }
+  
+  
+  .phase_two {
+    background-color: #5979d4;
+    margin-top: 50px;
+    height: 350px;
+  }
+  
+  .restaurant_selection {
+    padding-top: 40px;
+  }
+  
+  .restaurant_selection p {
+    padding-bottom: 5px;
+  }
+  .phase_two_next_btn {
+    padding-top: 132px;
+    text-align: right;
+    padding-right: 60px;
+  }
+  .phase_two_next_btn a {
+    text-decoration: none;
+    padding: 15px;
+      color: #5979d4;
+      font-weight: bold;
+  }
+  
+  .phase_two_previous_btn {
+    padding-top: 132px;
+    text-align: left;
+    padding-left: 60px;
+    float: left;
+  }
+  .phase_two_previous_btn a {
+    text-decoration: none;
+    padding: 15px;
+      color: #5979d4;
+      font-weight: bold;
+  }
+  
+  .phase_three_next_btn {
+    text-align: right;
+    padding-top: 150px;
+    padding-right: 35px;
+  }
+  .phase_three_next_btn a {
+    text-decoration: none;
+    padding: 15px;
+      color: #5979d4;
+      font-weight: bold;
+  }
+  
+  .phase_three_previous_btn {
+    text-align: left;
+    padding-top: 150px;
+    float: left;
+    padding-left: 35px;
+  }
+  .phase_three_previous_btn a {
+    text-decoration: none;
+    padding: 15px;
+      color: #5979d4;
+      font-weight: bold;
+  }
+  
+  .phase_three {
+    background-color: #5979d4;
+    margin-top: 50px;
+    height: 350px;
+  }
+  .more_item {
+    text-align: right;
+    padding-right: 35px;
+    padding-top: 20px;
+  }
+  
+  .select_dish {
+    float: left;
+    padding-left: 55px;
+    padding-top: 20px;
+  }
+  
+  .serving_number{
+    padding-top: 20px;
+  }
+ 
+  #wrapper{
+    background-color: #5979d4;
+    text-align: -webkit-center;
+    margin-top: 50px;
+    height: 350px;
+  }
+  
+  
+  .box{
+    text-align: left;
+    width: 350px;
+    padding-top: 20px;
+  }
+  .innerBox{
+    padding: 5px 0px 5px 0px;
+  }
+  .innerBox h4{
+    float: left;
+    border: 1px solid white;
+    padding: 5px 5px 5px 5px;
+    color: white;
+  }
+  .innerBox p{
+    text-align: center;
+    border: 1px solid white;
+    padding: 5px 5px 5px 5px;
+    color: white;
+  
+  }
+  .phase_four_next_btn {
+    text-align: right;
+    padding-top: 25px;
+    padding-right: 70px;
+  }
+  .phase_four_next_btn a {
+    text-decoration: none;
+    padding: 15px;
+      color: #5979d4;
+      font-weight: bold;
+  }
