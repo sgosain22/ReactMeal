@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import "../Meal.css";
 import { Link } from "react-router-dom";
 
-
-// JSON data 
+// JSON data
 
 let dishes = [
   {
@@ -207,9 +206,11 @@ let dishes = [
 ];
 
 // JSON data ends..
-
-
+var dish="";
+var no=""
+var arr=[]
 function MealStepTree() {
+  const [thirdStep, setthirdStep] = useState([]);
   const [formData, setFormData] = useState({
     meal_type: "",
     NOP: "",
@@ -222,89 +223,148 @@ function MealStepTree() {
   const local = JSON.parse(localStorage.getItem("list "));
   // console.log(local);
 
-  let foodList = [];
-  const filterDropDown = dishes.filter((food, index) =>{
-    food.restaurant.includes(local.restro);
-    foodList.push(food.name);
-  })
-  console.log(foodList);
-  
+  function getListFoodByRestaurant() {
+    var result = [];
+    dishes.map((value) => {
+      if (value.restaurant === local.restro) {
+        result.push(value);
+      }
+    });
 
+    return result;
+  }
+  var result = [];
+  function getListFood() {
+    getListFoodByRestaurant().map((value) => {
+      var index = value.availableMeals.indexOf(local.meal_type);
+      if (index !== -1) {
+        result.push(value.name);
+      }
+    });
+    console.log(result);
+  }
+  getListFood();
 
   const submitfun = () => {
     // console.log(local, formData, "lkl");
-
     localStorage.setItem(
       "list ",
       JSON.stringify({ ...local, NOD: formData.NOD, dishes: formData.dishes })
     );
   };
 
+  /////////////////////////////////////////////////////////////
+
+
+
+
+  ////////////////////////////////////////////////////////////
 
   return (
     <>
-   
       {/* <!-- step three start--> */}
       <div id="wrapper">
-      <div className="phase_three">
-        <div id="select_complete_dish">
-          <div className="row"></div>
+        <div className="phase_three">
+          <div className="navbar">
+            <div className="step3 current">
+              <Link to="/MealStepTree">Step3</Link>
+            </div>
+          </div>
 
-          <div id="extra_selection" className="select_dish col-sm-7">
-            <p>Please select a Dish</p>
-            <select
-              id="formSelectDish"
-              className="form-select"
-              aria-label="Default select example"
-              onChange={(e) => {
-                setFormData({ ...formData, dishes: e.target.value });
+
+
+
+
+          <div id="select_complete_dish">
+         
+                    {
+                      
+                      thirdStep.map(data=>{
+                        return<div style={{display:"flex "}}> <p>{data.dish}</p>
+                        <p>{data.no}</p>
+
+</div>                      })
+                    }
+            <div id="extra_selection" className="select_dish col-sm-7">
+              <p>Please select a Dish</p>
+
+              <select
+                id="formSelectDish"
+                className="form-select"
+                aria-label="Default select example"
+                
+                onChange={(e) => {
+                  dish=e.target.value 
+                  setFormData({ ...formData, dishes: e.target.value });
+                }}
+              >
+                {result.map((data) => {
+                  return <option>{data}</option>;
+                })}
+              </select>
+            </div>
+            <div id="extra" className="serving_number col-sm-5">
+              <p>Please Enter no. of servings</p>
+              <input
+                id="serving_no"
+                type="number"
+                name="serving"
+                
+                min={1}
+                max={10}
+              />
+            </div>
+
+            <div className="more_item">
+
+            <button onClick={()=>{
+              const obj={dish:dish,no:no}
+              
+              setthirdStep(pre=>[...pre,obj])
+
+              console.log(arr)
+            }} id="add">
+              Add
+            </button>
+          </div>
+
+          </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+          <div className="phase_three_previous_btn">
+            <button type="button" className="btn btn-primary">
+              <Link to="/MealStepTwo">Previous</Link>
+            </button>
+          </div>
+          <div className="phase_three_next_btn">
+            <button
+              type="button"
+              id="btnThree"
+              className="btn btn-primary"
+              onClick={() => {
+                setFormData({ ...formData, thirdStep });
+                
+              
+                submitfun();
               }}
             >
-              {/* {console.log(foodList,'foodList')} */}
-              {
-                foodList.map(data=>{
-                  return <option >{data}</option>
-                })
-              }
-                
-            
-              
-            </select>
+              <Link to="/ReviewPage">Next</Link>
+            </button>
           </div>
-          <div id="extra" className="serving_number col-sm-5">
-            <p>Please Enter no. of servings</p>
-            <input id="serving_no" type="number" name="serving" 
-              onChange={(e) => {
-                setFormData({ ...formData, NOD: e.target.value });
-              }}
-            />
-          </div>
-        </div>
-        <div className="more_item">
-          <button id="add">Add</button>
-        </div>
-        <div className="phase_three_previous_btn">
-          <button type="button" className="btn btn-primary">
-          <Link to="/MealStepTwo">Previous</Link>
-          </button>
-        </div>
-        <div className="phase_three_next_btn">
-          <button
-            type="button"
-            id="btnThree"
-            className="btn btn-primary"
-            onClick={() => {
-              submitfun();
-            }}
-          >
-            <Link to="/ReviewPage">Next</Link>
-          </button>
         </div>
       </div>
-</div>
       {/* <!-- step three end--> */}
-    
-     
     </>
   );
 }

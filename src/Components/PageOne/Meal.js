@@ -27,6 +27,9 @@ function Meal() {
       {/* <!-- step one start--> */}
       <div id="wrapper">
         <div className="phase_one">
+        <div className="navbar">
+            <div className="step1 current"><Link to="/">Step1</Link></div>
+          </div>
           <div id="wrapper">
             <div className="meal_selection">
               <p>Please select a Meal</p>

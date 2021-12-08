@@ -3,6 +3,10 @@
     padding: 0px;
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   }
+
+  body{
+    margin-top: 80px ;
+  }
   
   #wrapper {
     text-align: center;
@@ -11,23 +15,34 @@
     margin: auto;
   }
   
-  .navbar{
+  .navbarFist{
       display: flex;
       padding-left: 40px;
       padding-top: 30px;
   }
+  .navbar{
+    display: flex;
+    padding-left: 215px;
+    padding-top: 20px;
+}
+  .navbarFist a {
+    text-decoration:none;
+    color: white; 
+  }
+
   .navbar a {
     text-decoration:none;
     color: white; 
   }
-  .navbar a:active, .navbar a:focus, .navbar a:hover {
-      color: rgb(20, 20, 20); 
-  }
+  /* .navbar a:active, .navbar a:focus, .navbar a:hover {
+      color: #5979d4; 
+  } */
   .navbar a.highlite {
       color:red;
   }
   .navbar .current{
     background-color: rgb(20, 20, 20);
+    padding: 8px;
   }
   .step1, .step2, .step3, .review{
       border: 1px solid #5979d4;
@@ -37,7 +52,6 @@
   .phase_one {
     background-color: #5979d4;
     height: 330px;
-    margin-top: 50px;
   }
   .meal_selection p {
     padding-top: 20px;
@@ -64,7 +78,6 @@
   
   .phase_two {
     background-color: #5979d4;
-    margin-top: 50px;
     height: 350px;
   }
   
@@ -127,7 +140,6 @@
   
   .phase_three {
     background-color: #5979d4;
-    margin-top: 50px;
     height: 350px;
   }
   .more_item {
@@ -149,7 +161,6 @@
   #wrapper{
     background-color: #5979d4;
     text-align: -webkit-center;
-    margin-top: 50px;
     height: 350px;
   }
   

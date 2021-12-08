@@ -19,11 +19,13 @@ function ReviewPage() {
     <>
       <div id="wrapper">
         <div className="phase_four"></div>
-
+        <div className="navbar">
+            <div className="step4 current"><Link to="/ReviewPage">Review</Link></div>
+          </div>
         <div className="box">
           <div className="innerBox">
             <h4>Meal:</h4>
-            <p id="inner_box_one">{local.meal_type.toUpperCase()}</p>
+            <p id="inner_box_one">{local.meal_type}</p>
           </div>
           <div className="innerBox">
             <h4>No. of People:</h4>
@@ -31,11 +33,11 @@ function ReviewPage() {
           </div>
           <div className="innerBox">
             <h4>Restaurant:</h4>
-            <p id="inner_box_three">{local.restro.toUpperCase()}</p>
+            <p id="inner_box_three">{local.restro}</p>
           </div>
           <div className="innerBox">
             <h4>Dish Name:</h4>
-            <p id="inner_box_four">{local.dishes.toUpperCase()}</p>
+            <p id="inner_box_four">{local.dishes}</p>
           </div>
           <div className="innerBox">
             <h4>Dish Quantity:</h4>

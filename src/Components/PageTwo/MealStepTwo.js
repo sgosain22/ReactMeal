@@ -222,7 +222,7 @@ function MealStepTwo() {
   var res = [];
   const filterDrop = dishes.filter(function (index) {
     return index.availableMeals.map((data) => {
-      if (data == local.meal_type) {
+      if (data === local.meal_type) {
         console.log(index.restaurant, "qqqq");
         res.push(index.restaurant);
       }
@@ -245,12 +245,9 @@ function MealStepTwo() {
       {/* <!-- step two start--> */}
       <div id="wrapper">
         <div className="phase_two">
-          {/* <div className="navbar">
-            <div className="step1"> <Link to="/">Step1</Link> </div>
+          <div className="navbar">
             <div className="step2 current"><Link to="/MealStepTwo">Step2</Link></div>
-            <div className="step3"><Link to="/MealStepTree">Step3</Link></div>
-            <div className="review"><Link to="/ReviewPage">Review</Link></div>
-          </div> */}
+          </div>
           <div className="restaurant_selection">
             <p>Please select a Restaurant</p>
 
