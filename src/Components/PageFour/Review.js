@@ -3,6 +3,14 @@ import "../Meal.css";
 import { Link } from "react-router-dom";
 
 function ReviewPage() {
+  // const [formData, setFormData] = useState({
+  //   meal_type: "",
+  //   NOP: "",
+  //   restro: "",
+  //   dishes: [],
+  //   NOD: "",
+  // });
+  // const dish = { name: "", qty: "" };
 
   const local = JSON.parse(localStorage.getItem("list "));
   console.log(local);

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../Meal.css";
 import { Link } from "react-router-dom";
 
@@ -226,26 +226,32 @@ function MealStepTree() {
 
   const local = JSON.parse(localStorage.getItem("list "));
   // console.log(local);
-
+  
   function getListFoodByRestaurant() {
     var result = [];
     dishes.map((value) => {
       if (value.restaurant === local.restro) {
         result.push(value);
       }
-      return false
-    }) 
+      return true
+    });
+
     return result;
   }
 
   var result = [];
+  useEffect(() => {
+    setallval((pre) => [...pre, result]);
+   
+  },[]);
+
   function getListFood() {
     getListFoodByRestaurant().map((value) => {
       var index = value.availableMeals.indexOf(local.meal_type);
       if (index !== -1) {
         result.push(value.name);
       }
-      return false
+      return true
     });
     console.log(result);
   }
@@ -258,7 +264,9 @@ function MealStepTree() {
     );
   };
 
- 
+  // useEffect(() => {
+  //   vall.map((w) => {});
+  // }, [vall]);
 
   const addField = () => {
     setvall((pre) => [...pre, "1"]);
@@ -274,10 +282,6 @@ function MealStepTree() {
 
     setallval(vallsy);
   };
-  // useEffect(() => {
-  //   setallval((pre) => [...pre, result]);
-  //   console.log(allval);
-  // });
 
   const selectfunc = (e, i) => {
     const valarr = newval;
@@ -287,14 +291,6 @@ function MealStepTree() {
     setnewval(valarr);
     setindex(i);
   };
-
-  // const showwww = () => {
-  //   console.log(allval[0]);
-
-  //   allval[0]?.map((w) => {
-  //     console.log(w);
-  //   });
-  // };
 
   const setquantityfun = (data, i) => {
     const putquant = quantity;
@@ -319,6 +315,7 @@ function MealStepTree() {
 
                 //setnewval(pre=>[...pre,e.target.value]);
                 selectfunc(e, i);
+                
               }}
             >
               <option value="">Select</option>
@@ -339,7 +336,6 @@ function MealStepTree() {
                 //setFormData({ ...formData, NOD: e.target.value });
                 setquantityfun(dish, i);
               }}
-              // value={0}
               min={1}
               max={10}
             />
