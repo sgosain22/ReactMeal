@@ -36,12 +36,35 @@ function ReviewPage() {
             <p id="inner_box_three">{local.restro}</p>
           </div>
           <div className="innerBox">
-            <h4>Dish Name:</h4>
-            <p id="inner_box_four">{local.dishes}</p>
+
+            <thead >
+                <tr>
+                <th style= {{border:"1px solid white", color:"white", padding:"5px"}}>Dish Name</th>
+                <th style= {{border:"1px solid white", color:"white",  padding:"5px"}}>Dish Quantity</th>
+                </tr>
+            
+            </thead>
+            <tbody>
+
+            {
+              local.dishes.map((q,i)=>{
+              return(
+                <tr>
+                <th id="inner_box_four" style= {{border:"1px solid white", color:"white", padding:"5px", fontSize: "12px",
+    textAlign: "center"}}>{q}</th>
+                <th id="inner_box_five" style= {{border:"1px solid white", color:"white", padding:"5px", fontSize: "12px",
+    textAlign: "center"}}>{local.NOD[i]}</th>
+              </tr>
+
+              )
+              })
+            }
+              
+            </tbody>
+            
           </div>
           <div className="innerBox">
-            <h4>Dish Quantity:</h4>
-            <p id="inner_box_five">{local.NOD}</p>
+            
           </div>
         </div>
 

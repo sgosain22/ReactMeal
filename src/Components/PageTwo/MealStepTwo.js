@@ -246,7 +246,9 @@ function MealStepTwo() {
       <div id="wrapper">
         <div className="phase_two">
           <div className="navbar">
-            <div className="step2 current"><Link to="/MealStepTwo">Step2</Link></div>
+            <div className="step2 current">
+              <Link to="/MealStepTwo">Step2</Link>
+            </div>
           </div>
           <div className="restaurant_selection">
             <p>Please select a Restaurant</p>
@@ -259,6 +261,7 @@ function MealStepTwo() {
                 setFormData({ ...formData, restro: e.target.value });
               }}
             >
+              <option value="">Select</option>
               {uniq.map((dishes) => (
                 <option>{dishes}</option>
               ))}

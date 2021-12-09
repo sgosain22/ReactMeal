@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../Meal.css";
 import { Link } from "react-router-dom";
 
@@ -206,19 +206,37 @@ let dishes = [
 ];
 
 // JSON data ends..
-var dish="";
-var no=""
-var arr=[]
+var dish = "";
+var no = "";
+var arr = [];
 function MealStepTree() {
-  const [thirdStep, setthirdStep] = useState([]);
+  const [show, setShow] = [];
+
+  const [newval, setnewval] = useState([]);
+  const [index, setindex] = useState();
+  const [allval, setallval] = useState([]);
+  const [quantity, setquantity] = useState([]);
+  const [onch, setonch] = useState(
+    { value: 1 },
+    { value: 2 },
+    { value: 3 },
+    { value: 4 },
+    { value: 5 },
+    { value: 6 },
+    { value: 7 },
+    { value: 8 },
+    { value: 9 },
+    { value: 10 }
+  );
   const [formData, setFormData] = useState({
     meal_type: "",
     NOP: "",
     restro: "",
     dishes: [],
-    NOD: "",
+    NOD: [],
   });
   // const dish = { name: "", qty: "" };
+  const [vall, setvall] = useState(["1"]);
 
   const local = JSON.parse(localStorage.getItem("list "));
   // console.log(local);
@@ -233,6 +251,7 @@ function MealStepTree() {
 
     return result;
   }
+
   var result = [];
   function getListFood() {
     getListFoodByRestaurant().map((value) => {
@@ -246,19 +265,105 @@ function MealStepTree() {
   getListFood();
 
   const submitfun = () => {
-    // console.log(local, formData, "lkl");
     localStorage.setItem(
       "list ",
       JSON.stringify({ ...local, NOD: formData.NOD, dishes: formData.dishes })
     );
   };
 
-  /////////////////////////////////////////////////////////////
+  useEffect(() => {
+    vall.map((w) => {});
+  }, [vall]);
 
+  const addField = () => {
+    setvall((pre) => [...pre, "1"]);
+    let vallsy = allval;
+    console.log(newval);
 
+    var array3 = result.filter(function (obj) {
+      return newval.indexOf(obj) === -1;
+    });
+    console.log(array3);
 
+    vallsy[index + 1] = array3;
 
-  ////////////////////////////////////////////////////////////
+    setallval(vallsy);
+  };
+  useEffect((w) => {
+    setallval((pre) => [...pre, result]);
+    console.log(allval);
+  }, []);
+
+  const selectfunc = (e, i) => {
+    const valarr = newval;
+
+    valarr[i] = e.target.value;
+    console.log(valarr);
+    setnewval(valarr);
+    setindex(i);
+  };
+
+  const showwww = () => {
+    console.log(allval[0]);
+
+    allval[0]?.map((w) => {
+      console.log(w);
+    });
+  };
+
+  const setquantityfun = (data, i) => {
+    const putquant = quantity;
+
+    putquant[i] = data;
+    setquantity(putquant);
+  };
+
+  const valllll = () => {
+    return vall.map((w, i) => {
+      return (
+        <>
+          <div id="extra_selection" className="select_dish col-sm-7">
+            <p>Please select a Dish</p>
+
+            <select
+              id="formSelectDish"
+              className="form-select"
+              aria-label="Default select example"
+              onChange={(e) => {
+                dish = e.target.value;
+
+                //setnewval(pre=>[...pre,e.target.value]);
+                selectfunc(e, i);
+                setonch("1");
+              }}
+            >
+              <option value="">Select</option>
+              {allval[i]?.map((data) => {
+                return <option value={data}>{data}</option>;
+              })}
+            </select>
+          </div>
+          <div id="extra" className="serving_number col-sm-5">
+            <p>Please Enter no. of servings</p>
+
+            <input
+              id="serving_no"
+              type="number"
+              name="serving"
+              onChange={(e) => {
+                dish = e.target.value;
+                //setFormData({ ...formData, NOD: e.target.value });
+                setquantityfun(dish, i);
+              }}
+              value={0}
+              min={1}
+              max={10}
+            />
+          </div>
+        </>
+      );
+    });
+  };
 
   return (
     <>
@@ -271,76 +376,21 @@ function MealStepTree() {
             </div>
           </div>
 
-
-
-
-
           <div id="select_complete_dish">
-         
-                    {
-                      
-                      thirdStep.map(data=>{
-                        return<div style={{display:"flex "}}> <p>{data.dish}</p>
-                        <p>{data.no}</p>
-
-</div>                      })
-                    }
-            <div id="extra_selection" className="select_dish col-sm-7">
-              <p>Please select a Dish</p>
-
-              <select
-                id="formSelectDish"
-                className="form-select"
-                aria-label="Default select example"
-                
-                onChange={(e) => {
-                  dish=e.target.value 
-                  setFormData({ ...formData, dishes: e.target.value });
-                }}
-              >
-                {result.map((data) => {
-                  return <option>{data}</option>;
-                })}
-              </select>
-            </div>
-            <div id="extra" className="serving_number col-sm-5">
-              <p>Please Enter no. of servings</p>
-              <input
-                id="serving_no"
-                type="number"
-                name="serving"
-                
-                min={1}
-                max={10}
-              />
-            </div>
+            {valllll()}
 
             <div className="more_item">
-
-            <button onClick={()=>{
-              const obj={dish:dish,no:no}
-              
-              setthirdStep(pre=>[...pre,obj])
-
-              console.log(arr)
-            }} id="add">
-              Add
-            </button>
+              <button
+                onClick={() => {
+                  addField();
+                  console.log(arr);
+                }}
+                id="add"
+              >
+                Add
+              </button>
+            </div>
           </div>
-
-          </div>
-
-
-
-
-
-
-
-
-
-
-
-
 
           <div className="phase_three_previous_btn">
             <button type="button" className="btn btn-primary">
@@ -353,9 +403,14 @@ function MealStepTree() {
               id="btnThree"
               className="btn btn-primary"
               onClick={() => {
-                setFormData({ ...formData, thirdStep });
-                
-              
+                formData.dishes = newval;
+                formData.NOD = quantity;
+                setFormData({
+                  ...formData,
+                  NOD: formData.NOD,
+                  dishes: formData.dishes,
+                });
+
                 submitfun();
               }}
             >
@@ -364,6 +419,7 @@ function MealStepTree() {
           </div>
         </div>
       </div>
+
       {/* <!-- step three end--> */}
     </>
   );

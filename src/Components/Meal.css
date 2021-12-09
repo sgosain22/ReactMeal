@@ -115,7 +115,7 @@
   
   .phase_three_next_btn {
     text-align: right;
-    padding-top: 150px;
+    padding-top: 50px;
     padding-right: 35px;
   }
   .phase_three_next_btn a {
@@ -127,7 +127,7 @@
   
   .phase_three_previous_btn {
     text-align: left;
-    padding-top: 150px;
+    padding-top: 50px;
     float: left;
     padding-left: 35px;
   }
@@ -140,7 +140,7 @@
   
   .phase_three {
     background-color: #5979d4;
-    height: 350px;
+    height: auto;
   }
   .more_item {
     text-align: right;
@@ -161,7 +161,8 @@
   #wrapper{
     background-color: #5979d4;
     text-align: -webkit-center;
-    height: 350px;
+    height: auto;
+    padding-bottom:10px ;
   }
   
   

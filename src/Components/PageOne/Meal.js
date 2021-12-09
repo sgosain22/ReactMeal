@@ -3,32 +3,31 @@ import "../Meal.css";
 import { Link } from "react-router-dom";
 
 function Meal() {
-
   const [formData, setFormData] = useState({
-    meal_type: '',
-    NOP: '',
-    restro: '',
+    meal_type: "",
+    NOP: "",
+    restro: "",
     dishes: [],
-    NOD: ''
-  })
+    NOD: "",
+  });
   // const dish = {name: '', qty: ''};
-  
 
   // add data to local storage
 
- 
-  const submitfun =()=>{
-    console.log(formData)
-    localStorage.setItem('list ', JSON.stringify(formData))
-  }
+  const submitfun = () => {
+    console.log(formData);
+    localStorage.setItem("list ", JSON.stringify(formData));
+  };
 
   return (
     <>
       {/* <!-- step one start--> */}
       <div id="wrapper">
         <div className="phase_one">
-        <div className="navbar">
-            <div className="step1 current"><Link to="/">Step1</Link></div>
+          <div className="navbar">
+            <div className="step1 current">
+              <Link to="/">Step1</Link>
+            </div>
           </div>
           <div id="wrapper">
             <div className="meal_selection">
@@ -37,29 +36,29 @@ function Meal() {
                 id="three_meal"
                 className="form-select"
                 aria-label="Default select example"
-                onChange={(e)=>{
-                 console.log(e.target.value)
-                 setFormData({...formData ,meal_type:e.target.value})
-                }} 
+                onChange={(e) => {
+                  console.log(e.target.value);
+                  setFormData({ ...formData, meal_type: e.target.value });
+                }}
               >
-                <option>---</option>
-                <option value="breakfast" >breakfast</option>
-                <option value="lunch" >lunch</option>
-                <option value="dinner" >dinner</option>
+                <option>Select</option>
+                <option value="breakfast">breakfast</option>
+                <option value="lunch">lunch</option>
+                <option value="dinner">dinner</option>
               </select>
             </div>
             <div className="guest_number">
-              <p >Please Enter number of people</p>
+              <p>Please Enter number of people</p>
               <select
                 id="guest_quantity"
                 className="form-select"
                 aria-label="Default select example"
-                onChange={(e)=>{
-                  console.log(e.target.value)
-                  setFormData({...formData ,NOP:e.target.value})
+                onChange={(e) => {
+                  console.log(e.target.value);
+                  setFormData({ ...formData, NOP: e.target.value });
                 }}
               >
-                <option>---</option>
+                <option>Select</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -73,10 +72,14 @@ function Meal() {
               </select>
             </div>
             <div className="next_btn">
-              <button type="button" id="btnOne" className="btn btn-primary"
-              onClick={()=>{
-                submitfun()
-              }} >
+              <button
+                type="button"
+                id="btnOne"
+                className="btn btn-primary"
+                onClick={() => {
+                  submitfun();
+                }}
+              >
                 <Link to="/MealStepTwo">Next</Link>
               </button>
             </div>
