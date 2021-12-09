@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "../Meal.css";
 import { Link } from "react-router-dom";
 
@@ -207,27 +207,13 @@ let dishes = [
 
 // JSON data ends..
 var dish = "";
-var no = "";
 var arr = [];
 function MealStepTree() {
-  const [show, setShow] = [];
 
   const [newval, setnewval] = useState([]);
   const [index, setindex] = useState();
   const [allval, setallval] = useState([]);
   const [quantity, setquantity] = useState([]);
-  const [onch, setonch] = useState(
-    { value: 1 },
-    { value: 2 },
-    { value: 3 },
-    { value: 4 },
-    { value: 5 },
-    { value: 6 },
-    { value: 7 },
-    { value: 8 },
-    { value: 9 },
-    { value: 10 }
-  );
   const [formData, setFormData] = useState({
     meal_type: "",
     NOP: "",
@@ -247,8 +233,8 @@ function MealStepTree() {
       if (value.restaurant === local.restro) {
         result.push(value);
       }
-    });
-
+      return false
+    }) 
     return result;
   }
 
@@ -259,6 +245,7 @@ function MealStepTree() {
       if (index !== -1) {
         result.push(value.name);
       }
+      return false
     });
     console.log(result);
   }
@@ -271,9 +258,7 @@ function MealStepTree() {
     );
   };
 
-  useEffect(() => {
-    vall.map((w) => {});
-  }, [vall]);
+ 
 
   const addField = () => {
     setvall((pre) => [...pre, "1"]);
@@ -289,10 +274,10 @@ function MealStepTree() {
 
     setallval(vallsy);
   };
-  useEffect((w) => {
-    setallval((pre) => [...pre, result]);
-    console.log(allval);
-  }, []);
+  // useEffect(() => {
+  //   setallval((pre) => [...pre, result]);
+  //   console.log(allval);
+  // });
 
   const selectfunc = (e, i) => {
     const valarr = newval;
@@ -303,13 +288,13 @@ function MealStepTree() {
     setindex(i);
   };
 
-  const showwww = () => {
-    console.log(allval[0]);
+  // const showwww = () => {
+  //   console.log(allval[0]);
 
-    allval[0]?.map((w) => {
-      console.log(w);
-    });
-  };
+  //   allval[0]?.map((w) => {
+  //     console.log(w);
+  //   });
+  // };
 
   const setquantityfun = (data, i) => {
     const putquant = quantity;
@@ -334,7 +319,6 @@ function MealStepTree() {
 
                 //setnewval(pre=>[...pre,e.target.value]);
                 selectfunc(e, i);
-                setonch("1");
               }}
             >
               <option value="">Select</option>
@@ -355,7 +339,7 @@ function MealStepTree() {
                 //setFormData({ ...formData, NOD: e.target.value });
                 setquantityfun(dish, i);
               }}
-              value={0}
+              // value={0}
               min={1}
               max={10}
             />
